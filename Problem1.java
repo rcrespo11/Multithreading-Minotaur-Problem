@@ -3,8 +3,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 class Problem1{
-    private static final int NUM_DINERS = 100;
-    private static boolean[] dinersVisited = new boolean[NUM_DINERS];
+    private static final int NUM_GUESTS = 100;
+    private static boolean[] dinersVisited = new boolean[NUM_GUESTS];
     private static Lock lock = new ReentrantLock();
     private static boolean isCupcakeAvailable = true;
     private static int currentDinerCount = 0;
@@ -16,7 +16,7 @@ class Problem1{
     }
 
     private static void checkCupcake() {
-        while (currentDinerCount < NUM_DINERS) {
+        while (currentDinerCount < NUM_GUESTS) {
             lock.lock();
             if (activeDinerIndex == 0) {
                 if (!isCupcakeAvailable) {
@@ -34,7 +34,7 @@ class Problem1{
     }
 
     private static void exploreLabyrinth(int dinerIndex) {
-        while (currentDinerCount < NUM_DINERS) {
+        while (currentDinerCount < NUM_GUESTS) {
             lock.lock();
             if (activeDinerIndex == dinerIndex && isCupcakeAvailable && !dinersVisited[dinerIndex]) {
                 isCupcakeAvailable = false;
@@ -47,19 +47,19 @@ class Problem1{
 
     public static void main(String[] args) {
       //  long startTime = System.currentTimeMillis();
-        Thread[] threads = new Thread[NUM_DINERS];
+        Thread[] threads = new Thread[NUM_GUESTS];
 
         threads[0] = new Thread(Problem1::checkCupcake);
         threads[0].start();
 
-        for (int i = 1; i < NUM_DINERS; i++) {
+        for (int i = 1; i < NUM_GUESTS; i++) {
             final int index = i;
             threads[i] = new Thread(() -> exploreLabyrinth(index));
             threads[i].start();
         }
 
-        while (currentDinerCount < NUM_DINERS) {
-            activeDinerIndex = getRandomNumber(0, NUM_DINERS - 1);
+        while (currentDinerCount < NUM_GUESTS) {
+            activeDinerIndex = getRandomNumber(0, NUM_GUESTS - 1);
         }
 
         for (Thread thread : threads) {
