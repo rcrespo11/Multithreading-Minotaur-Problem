@@ -5,11 +5,13 @@ The assignment uses multithreading as a solution to the Minotaur Problem
 To compile the programs:
 
 javac Problem1.java
+
 javac Problem2.java
 
 To execute the programs, no user input is needed. Simply run:
 
 java Problem1.java
+
 java Problem2.java
 
 # Problem 1
