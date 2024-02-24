@@ -16,7 +16,7 @@ java Problem2.java
 
 # Problem 1
 
-For the first problem, the activation of a thread is required for each guest. To solve the issue of informing the Minotaur when all guests have eaten a cake, it's necessary for the first thread to count how many times the cake is replaced. Since each guest will be called randomly, every time a guest consumes a cake, a flag will be assigned to determine if they had previously consumed a cake or not. When everyone has had the opportunity to eat, and the counter reaches N guests, the Minotaur will be informed and the program will terminate.
+For the first problem, the activation of a thread is required for each guest. To solve the issue of informing the Minotaur when all guests have eaten a cake, it's necessary for the first thread to count how many times the cake is replaced. Since each guest will be called randomly, every time a guest consumes a cake, a flag will be assigned to determine if they had previously consumed a cake or not. When everyone has had the opportunity to eat, and the counter reaches N guests, the Minotaur will be informed and the program will terminate. Due to the random selection of guests, it's necessary to mention that the execution time of this program will vary widely.
 
 # Problem 2
 
